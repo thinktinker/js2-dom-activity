@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://google.com">Google</a><br>
+    <a href="https://facebook.com">Facebook</a><br>
+    <a href="https://bloomberg.com">Bloomberg</a><br>
+    <a href="https://yahoo.com">Yahoo</a><br>
+    <button onclick="showLinksDetails()">Show Link Details</button>
+    <script>
+        // Write a function and call it when clicking a button to show an alert with:
+        // The number of links on the page
+        // The first link in the page
+        // The last link in the page
+        function showLinksDetails(){
+            const numLinks = document.getElementsByTagName('a').length;
+            const firstLink = document.getElementsByTagName('a')[0].href;
+            const lastLink = document.getElementsByTagName('a')[numLinks-1].href;
+            alert("Number of links: " + numLinks + ". \nFirst Link: " + firstLink + "\nLast Link: " + lastLink );
+        }
+    </script>
+</body>
+</html>

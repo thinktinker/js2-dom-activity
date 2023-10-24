@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <!-- index [0] -->
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+        <!-- index [1] -->
+        <p>Here we will add a link to the <a href="https://www.google.com.sg/">Google's homepage</a></p>
+      </section>
+      
+      <script>
+        // example 1:
+        // 1. select the <a> tag
+        // const mylink = document.querySelector('a');
+        // 2. change the textContent of mylink to  "Mozilla developer page"
+        // mylink.textContent = "<h1>Mozilla developer page</h1>";
+        // 3. change myLink to Mozilla developer site: https://developer.mozilla.org/
+        // mylink.href = "https://developer.mozilla.org";
+
+        // 1. select the <a> tag
+        const mylink = document.getElementsByTagName('a');
+       
+       // 2. change the textContent of mylink to  "Mozilla developer page"
+       mylink[0].textContent = "Mozilla developer page";
+       
+       // 3. change myLink to Mozilla developer site: https://developer.mozilla.org/
+       mylink[0].setAttribute("href", "https://developer.mozilla.org");
+
+        
+      </script>
+
+  </body>
+</html>
