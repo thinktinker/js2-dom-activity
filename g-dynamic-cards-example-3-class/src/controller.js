@@ -7,22 +7,33 @@ class Controller{
     // and store the passed-in param 'data' to localStorage via storeDataTolocalStorage
 
     constructor(currentId = 0, data = []){
-
         this.products = data !== null && data;  // class Controller's property: products
         this.currentId = currentId;             // class Controller's property: currentId
 
-        this.storeDataToLocalStorage(data)
+        this.storeDataToLocalStorage(data);
         
     };
 
-    // saveDataToLocalStorage() method belongs to class Controller
+    // storeDataToLocalStorage() method belongs to class Controller
     // if localStorage 'productList' doesn't exist
+    // ensure there are values in 'data' before storing the data
+    // current id is used here to determine the currentId in this instance of the object
     // stores the param's data into the web browser's localStorage
     // the localStorage variable is defined with the name 'productList'
 
     storeDataToLocalStorage(data){
         if(!localStorage.getItem("productList")){
-            const sampleItems = data;   
+            const sampleItems = [];
+            if(data.length > 0){
+                for (let index = 0; index < this.currentId; index++) {
+                    sampleItems.push({
+                        id: index+1,  // increment the id
+                        title: data[index].title,
+                        content: data[index].content,
+                        image: data[index].image,
+                    })
+                }
+            }
             localStorage.setItem("productList", JSON.stringify(sampleItems));
         }
     }
@@ -96,6 +107,7 @@ class Controller{
         // (A)
         if (storageItems) {
             const products = JSON.parse(storageItems);
+            console.log(`Testing products length ${products.length}`);
             const product = {
                 id: products.length+1,  // increment the id for each newly added product
                 title: title,
@@ -108,8 +120,10 @@ class Controller{
         }
         
         // (B)
+        const setId = !storageItems ? 1 : storageItems.length++;
+
         const product = {
-            id: this.currentId++,   
+            id: setId, // this.currentId++,   
             title: title,
             content: content,
             image: image,
@@ -119,3 +133,5 @@ class Controller{
     };
 
 }
+
+
